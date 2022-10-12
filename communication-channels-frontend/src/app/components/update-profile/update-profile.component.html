@@ -1,0 +1,89 @@
+<app-main-nav>
+  <div class="content">
+    <mat-card class="center">
+      <mat-card-title>Update Profile</mat-card-title>
+      <mat-card-content>
+        <mat-card>
+          <mat-card-title>Profile image</mat-card-title>
+
+          <img
+            *ngIf="profileImage !== undefined"
+            [class.mat-elevation-z8]="true"
+            [src]="profileImage"
+            alt="Profile image absent"
+            mat-card-sm-image
+          />
+
+          <mat-card-actions>
+            <button
+              (click)="fileInput.click()"
+              color="primary"
+              mat-raised-button
+              style="margin: 5px"
+              type="button"
+            >
+              Change Profile Picture
+              <input
+                #fileInput
+                (change)="detectFile($event)"
+                accept="image/*"
+                name="file"
+                style="display: none"
+                type="file"
+              />
+            </button>
+          </mat-card-actions>
+        </mat-card>
+
+        <form [formGroup]="form">
+          <p>
+            <mat-form-field appearance="outline" color="primary">
+              <mat-label>First Name</mat-label>
+              <input formControlName="firstName" matInput required/>
+              <mat-error *ngIf="form.get('firstName').errors?.required"
+              >First Name is required
+              </mat-error
+              >
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline" color="primary">
+              <mat-label>Last Name</mat-label>
+              <input formControlName="lastName" matInput required/>
+              <mat-error *ngIf="form.get('lastName').errors?.required"
+              >Last Name is required
+              </mat-error
+              >
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline" color="primary">
+              <mat-label>Username</mat-label>
+              <input formControlName="username" matInput required/>
+              <mat-error *ngIf="form.get('username').errors?.required"
+              >Username is required
+              </mat-error
+              >
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline" color="primary">
+              <mat-label>Phone</mat-label>
+              <input formControlName="phone" matInput/>
+            </mat-form-field>
+          </p>
+        </form>
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button
+          (click)="updateUser()"
+          [disabled]="form.invalid"
+          color="primary"
+          mat-raised-button
+        >
+          Update Profile
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</app-main-nav>

@@ -1,0 +1,33 @@
+<app-main-nav>
+  <div>
+    <div *ngIf="!channelLoading">
+      <div *ngIf="!channelsError" class="content">
+        <mat-card *ngFor="let channel of channels" class="example-card">
+          <mat-card-header>
+            <mat-card-title>
+              <button
+                [routerLink]="['/channel', channel.id]"
+                color="primary"
+                mat-raised-button
+              >
+                {{ channel.name }}
+              </button>
+            </mat-card-title>
+            <a></a>
+          </mat-card-header>
+          <mat-card-content>
+            <img
+              [routerLink]="['/channel', channel.id]"
+              [src]="channel.profilePicture"
+              alt=""
+            />
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div *ngIf="channelsError">
+        <p>Error while loading channels</p>
+      </div>
+    </div>
+    <div *ngIf="channelLoading"><p>Loading...</p></div>
+  </div>
+</app-main-nav>

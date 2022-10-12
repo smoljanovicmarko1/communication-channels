@@ -1,0 +1,198 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <img
+      *ngIf="this.post.user.profilePicture; else picture_progress"
+      [src]="this.post.user.profilePicture"
+      alt=""
+      mat-card-avatar
+    />
+    <ng-template #picture_progress>
+      <mat-spinner [diameter]="30"></mat-spinner>
+    </ng-template>
+    <mat-card-title
+      >{{ post.title }}
+      <span class="title-date"> ,{{ post.dateCreated | date }}</span>
+      <mat-icon
+        (click)="favourite()"
+        *ngIf="!isFavourite"
+        class="favourite"
+        matTooltip="Add to favourites"
+        matTooltipPosition="below"
+        >bookmark_border
+      </mat-icon>
+      <mat-icon
+        (click)="favourite()"
+        *ngIf="isFavourite"
+        class="favourite"
+        matTooltip="Remove from favourites"
+        matTooltipPosition="below"
+        >bookmark
+      </mat-icon>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <div style="display: flex">
+        <p>
+          {{
+            post.user.firstName +
+              " " +
+              post.user.lastName +
+              ", " +
+              post.user.username
+          }}
+        </p>
+        <p style="font-weight: bold; padding-left: 5px">
+          {{ post.edited ? "Edited" : "" }}
+        </p>
+      </div>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <span class="post-body">{{ post.body }}</span>
+    <br />
+    <br />
+    <span *ngIf="post.attachments != undefined && post.attachments.length != 0">
+      <br />
+      <div class="attachment-container">
+        <mat-card
+          *ngFor="let attachment of post.attachments"
+          [ngClass]="{
+            'attachment-card':
+              attachment.uploadError === undefined || !attachment.uploadError,
+            'attachment-card-error': attachment.uploadError
+          }"
+        >
+          <app-attachment
+            (deleteAttachment)="onDeleteAttachment($event)"
+            [attachment]="attachment"
+            [post]="this.post"
+            [uploadProgress]="attachment.id"
+          ></app-attachment>
+        </mat-card>
+      </div>
+    </span>
+    <div *ngIf="post.user.id == loggedUser.id">
+      <form [formGroup]="fileForm">
+        <button
+          (click)="fileInput.click()"
+          color="primary"
+          mat-stroked-button
+          matTooltip="Select files to upload as attachment to this post"
+          matTooltipClass="my-tooltip"
+          style="margin: 5px"
+          type="button"
+        >
+          <fa-icon [icon]="faUpload"></fa-icon>
+          <input
+            #fileInput
+            (change)="detectFiles($event)"
+            multiple
+            name="file"
+            style="display: none"
+            type="file"
+          />
+        </button>
+        <button
+          (click)="onUpload()"
+          [matTooltip]="getSelectedFileNames(this.filesToUploadPost)"
+          color="primary"
+          mat-stroked-button
+          matTooltipClass="my-tooltip"
+          type="button"
+        >
+          <fa-icon [icon]="faCommitUpload"></fa-icon>
+        </button>
+      </form>
+    </div>
+  </mat-card-content>
+
+  <hr class="hr-main" />
+  <mat-card-actions *ngIf="post.likes !== undefined">
+    <button
+      (click)="onLike()"
+      [class.selected]="isLiked"
+      mat-icon-button
+      matTooltip="Like"
+      matTooltipPosition="below"
+    >
+      <mat-icon>thumb_up</mat-icon>
+    </button>
+    {{ getLikesNumber() }}
+    <button
+      (click)="onDislike()"
+      [class.selected]="isDisliked"
+      mat-icon-button
+      matTooltip="Dislike"
+      matTooltipPosition="below"
+    >
+      <mat-icon>thumb_down</mat-icon>
+    </button>
+    {{ getDislikeNumber() }}
+    <button
+      (click)="commentButtonClicked()"
+      mat-icon-button
+      matTooltip="Comments"
+      matTooltipPosition="below"
+    >
+      <mat-icon>message</mat-icon>
+    </button>
+  </mat-card-actions>
+
+  <mat-card-content *ngIf="isCommentOpen" class="comments">
+    <app-comment
+      *ngFor="let comment of post.comments"
+      [comment]="comment"
+    ></app-comment>
+    <p *ngIf="post.comments.length == 0">No comments</p>
+  </mat-card-content>
+
+  <mat-form-field class="comment">
+    <input
+      #comment
+      (keyup.enter)="postComment(comment.value)"
+      matInput
+      placeholder="Comment"
+    />
+  </mat-form-field>
+  <button
+    (click)="fileInputComment.click()"
+    [matTooltip]="this.getSelectedFileNames(this.filesToUploadComment)"
+    color="primary"
+    mat-mini-fab
+    matTooltipClass="my-tooltip"
+    style="margin: 5px"
+    type="button"
+  >
+    <fa-icon [icon]="faUpload"></fa-icon>
+    <input
+      #fileInputComment
+      (change)="detectFilesComment($event)"
+      multiple
+      name="file"
+      style="display: none"
+      type="file"
+    />
+  </button>
+  <button
+    (click)="postComment(comment.value)"
+    (keyup.enter)="postComment(comment.value)"
+    mat-button
+  >
+    Post a comment
+  </button>
+  <button
+    (click)="openEditPostDialog(post)"
+    [hidden]="!isEditingAllowed()"
+    mat-raised-button
+    color="accent"
+  >
+    Edit Post
+  </button>
+  <button
+    (click)="deletePost(post.id)"
+    [hidden]="!isDeletingAllowed()"
+    mat-raised-button
+    color="warn"
+  >
+    Delete Post
+  </button>
+</mat-card>

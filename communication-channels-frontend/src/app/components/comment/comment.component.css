@@ -1,0 +1,41 @@
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-size: cover;
+}
+
+.title-date {
+  font-size: 12px;
+  color: hsl(0, 3%, 48%);
+}
+
+.mat-card {
+  margin: 2%;
+}
+
+.mat-card-content {
+  padding: 15px 0px 0px 10px;
+}
+
+.selected {
+  color: #4ca1af;
+}
+
+.mat-card-action-button {
+  padding: 0;
+}
+
+.edit {
+  color: hsl(228, 64%, 44%);
+}
+
+.mat-card-actions {
+  color: dimgray;
+}
+
+.hr-main {
+  border: 5px solid #4ca1af;
+  border-radius: 50%;
+}

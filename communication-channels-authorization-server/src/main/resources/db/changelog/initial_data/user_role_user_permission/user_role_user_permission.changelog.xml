@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="markosmoljanovic" id="user_role_user_permission">
+        <sql>
+            <![CDATA[
+            INSERT INTO user_role_user_permission (id, user_role_id, user_permission_id)
+            VALUES (null, 1, 1);
+            INSERT INTO user_role_user_permission (id, user_role_id, user_permission_id)
+            VALUES (null, 1, 7);
+            INSERT INTO user_role_user_permission (id, user_role_id, user_permission_id)
+            VALUES (null, 1, 8);
+            INSERT INTO user_role_user_permission (id, user_role_id, user_permission_id)
+            VALUES (null, 1, 9);
+            INSERT INTO user_role_user_permission (id, user_role_id, user_permission_id)
+            VALUES (null, 2, 1);
+            INSERT INTO user_role_user_permission (id, user_role_id, user_permission_id)
+            VALUES (null, 2, 2);
+            INSERT INTO user_role_user_permission (id, user_role_id, user_permission_id)
+            VALUES (null, 2, 3);
+            INSERT INTO user_role_user_permission (id, user_role_id, user_permission_id)
+            VALUES (null, 2, 4);
+            INSERT INTO user_role_user_permission (id, user_role_id, user_permission_id)
+            VALUES (null, 2, 5);
+            INSERT INTO user_role_user_permission (id, user_role_id, user_permission_id)
+            VALUES (null, 2, 6);
+            INSERT INTO user_role_user_permission (id, user_role_id, user_permission_id)
+            VALUES (null, 2, 7);
+            INSERT INTO user_role_user_permission (id, user_role_id, user_permission_id)
+            VALUES (null, 2, 8);
+            INSERT INTO user_role_user_permission (id, user_role_id, user_permission_id)
+            VALUES (null, 2, 9);
+            INSERT INTO user_role_user_permission (id, user_role_id, user_permission_id)
+            VALUES (null, 3, 1);
+            INSERT INTO user_role_user_permission (id, user_role_id, user_permission_id)
+            VALUES (null, 3, 2);
+            INSERT INTO user_role_user_permission (id, user_role_id, user_permission_id)
+            VALUES (null, 3, 4);
+            INSERT INTO user_role_user_permission (id, user_role_id, user_permission_id)
+            VALUES (null, 3, 5);
+            INSERT INTO user_role_user_permission (id, user_role_id, user_permission_id)
+            VALUES (null, 3, 7);
+            INSERT INTO user_role_user_permission (id, user_role_id, user_permission_id)
+            VALUES (null, 3, 8);
+            INSERT INTO user_role_user_permission (id, user_role_id, user_permission_id)
+            VALUES (null, 3, 9);
+            ]]>
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
+

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="markosmoljanovic" id="user">
+        <sql>
+            <![CDATA[
+            INSERT INTO `user` (id, username, password, first_name, last_name, date_created, email, phone,
+                                is_account_non_expired, is_credentials_non_expired, is_enabled, is_account_non_locked,
+                                user_role_id, profile_picture)
+            VALUES (null, 'marko', '{bcrypt}$2y$12$lbYAvhizYIv3gxkXdqkvTOIzrgPKLezd11Tj5crfUdsiETQQbxiYa', 'Marko',
+                    'Smoljanovic', '2020-07-13', 'marko@gmail.com', '+381641261342', 1, 1, 1, 1, 2,
+                    'user\\1\\profile\\Fo4_Hacker.png'); -- password: marko
+            ]]>
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
+

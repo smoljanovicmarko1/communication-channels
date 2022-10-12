@@ -1,0 +1,53 @@
+.mat-card {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 200px;
+}
+
+.container {
+  display: flex;
+}
+
+.att-prefix {
+  margin: 0 10px 0 2px;
+  flex-grow: 0.1;
+}
+
+.att-center {
+  flex-grow: 2;
+}
+
+.att-download {
+  flex-grow: 0.1;
+  color: royalblue;
+  margin-left: 10px;
+}
+
+.att-delete {
+  flex-grow: 0.1;
+  margin: 0px 0px 0px 10px;
+  color: red;
+}
+
+.att-upload-progress {
+  flex-grow: 1;
+  margin-left: 10px;
+}
+
+.att-abort-upload {
+  flex-grow: 1;
+  margin-left: 5px;
+  color: royalblue;
+}
+
+a:hover {
+  color: black;
+}
+
+span {
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: break-word;
+  overflow: hidden !important;
+}

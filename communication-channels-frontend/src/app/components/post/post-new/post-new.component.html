@@ -1,0 +1,47 @@
+<h1 mat-dialog-title>Create new post!</h1>
+<ng-form [formGroup]="form">
+  <mat-form-field appearance="fill">
+    <mat-label>Title</mat-label>
+    <input formControlName="title" matInput />
+    <mat-error *ngIf="form.get('title').invalid">Title is required!</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Body</mat-label>
+    <textarea formControlName="body" matInput class="body_input"></textarea>
+    <mat-error *ngIf="form.get('body').invalid">Body is required!</mat-error>
+  </mat-form-field>
+
+  <hr />
+
+  <button
+    (click)="fileInput.click()"
+    [matTooltip]="this.getSelectedFileNames()"
+    color="primary"
+    mat-mini-fab
+    matTooltipClass="my-tooltip"
+    style="margin: 5px"
+    type="button"
+  >
+    <fa-icon [icon]="faUpload"></fa-icon>
+    <input
+      #fileInput
+      (change)="detectFilesAndUpdateFormGroup($event)"
+      multiple
+      name="file"
+      style="display: none"
+      type="file"
+    />
+  </button>
+
+  <br />
+  <button
+    [disabled]="form.invalid"
+    [mat-dialog-close]="form.value"
+    color="primary"
+    mat-raised-button
+  >
+    Create
+  </button>
+  <button (click)="closeDialog()" mat-button>Close</button>
+</ng-form>

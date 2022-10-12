@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="channel-1" author="markosmoljanovic">
+        <createTable tableName="channel">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(255)"/>
+            <column name="date_created" type="date"/>
+            <column name="category_id" type="bigint">
+                <constraints foreignKeyName="channel_category" references="category(id)"/>
+            </column>
+            <column name="channel_status_id" type="bigint">
+                <constraints foreignKeyName="channel_channel_status" references="channel_status(id)"/>
+            </column>
+            <column name="communication_direction_id" type="bigint">
+                <constraints foreignKeyName="channel_communication_direction" references="communication_direction(id)"/>
+            </column>
+            <column name="channel_id" type="bigint">
+                <constraints foreignKeyName="channel_channel" references="channel(id)"/>
+            </column>
+            <column name="profile_picture_url" type="varchar(1000)"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

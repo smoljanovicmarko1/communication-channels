@@ -1,0 +1,62 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav {
+  background: inherit;
+}
+
+.mat-toolbar {
+  background: #673ab7;
+  color: white;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.navbar {
+  justify-content: space-between;
+}
+
+span {
+  padding-right: 1rem;
+}
+
+mat-sidenav-content {
+  background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(11).jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.example-option-img {
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+[dir="rtl"] .example-option-img {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+.search-button {
+  width: 100%;
+  text-align: left;
+}

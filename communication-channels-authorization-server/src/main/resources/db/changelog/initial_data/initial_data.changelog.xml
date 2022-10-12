@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <include file="category/category.changelog.xml" relativeToChangelogFile="true"/>
+    <include file="user_role/user_role.changelog.xml" relativeToChangelogFile="true"/>
+    <include file="user/user.changelog.xml" relativeToChangelogFile="true"/>
+    <include file="channel_role/channel_role.changelog.xml" relativeToChangelogFile="true"/>
+    <include file="user_permission/user_permission.changelog.xml" relativeToChangelogFile="true"/>
+    <include file="like_status/like_status.changelog.xml" relativeToChangelogFile="true"/>
+    <include file="comment_status/comment_status.changelog.xml" relativeToChangelogFile="true"/>
+    <include file="channel_status/channel_status.changelog.xml" relativeToChangelogFile="true"/>
+    <include file="communication_direction/communication_direction.changelog.xml" relativeToChangelogFile="true"/>
+    <include file="user_role_user_permission/user_role_user_permission.changelog.xml" relativeToChangelogFile="true"/>
+
+</databaseChangeLog>

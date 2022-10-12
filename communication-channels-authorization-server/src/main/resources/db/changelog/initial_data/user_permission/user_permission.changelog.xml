@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="markosmoljanovic" id="user_permission">
+        <sql>
+            <![CDATA[
+            INSERT INTO user_permission (id, name)
+            VALUES (null, 'channel:read');
+            INSERT INTO user_permission (id, name)
+            VALUES (null, 'channel:write');
+            INSERT INTO user_permission (id, name)
+            VALUES (null, 'channel:delete');
+            INSERT INTO user_permission (id, name)
+            VALUES (null, 'user:read');
+            INSERT INTO user_permission (id, name)
+            VALUES (null, 'user:write');
+            INSERT INTO user_permission (id, name)
+            VALUES (null, 'user:delete');
+            INSERT INTO user_permission (id, name)
+            VALUES (null, 'post:read');
+            INSERT INTO user_permission (id, name)
+            VALUES (null, 'post:write');
+            INSERT INTO user_permission (id, name)
+            VALUES (null, 'post:delete');
+            ]]>
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
+

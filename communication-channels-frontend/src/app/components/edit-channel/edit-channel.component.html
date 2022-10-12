@@ -1,0 +1,106 @@
+<app-main-nav>
+  <div *ngIf="channel">
+    <div class="center">
+      <mat-card>
+        <button (click)="addUsers()" color="primary" mat-raised-button>
+          Add Users
+        </button>
+        <button (click)="removeUsers()" color="primary" mat-raised-button>
+          Remove Users
+        </button>
+        <button
+          [routerLink]="['/channel', channel.id]"
+          color="warn"
+          mat-raised-button
+        >
+          Back to {{ channel.name }}
+        </button>
+        <hr/>
+        <mat-card-title>Edit Channel</mat-card-title>
+        <mat-card-content>
+          <form [formGroup]="form">
+            <mat-form-field appearance="outline" color="primary">
+              <mat-label>Name</mat-label>
+              <input formControlName="name" matInput required/>
+              <mat-error *ngIf="form.get('name').errors?.name"
+              >Name is required
+              </mat-error
+              >
+            </mat-form-field>
+            <p
+              [innerText]="nameValidationFailedResponseMessage"
+              class="mat-error"
+            ></p>
+            <mat-form-field appearance="fill">
+              <mat-label>Select Category</mat-label>
+              <mat-select formControlName="category">
+                <mat-option>None</mat-option>
+                <mat-option
+                  *ngFor="let category of categories"
+                  [value]="category.name.valueOf()"
+                >
+                  {{ category.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Select Communication Direction</mat-label>
+              <mat-select formControlName="communicationDirection">
+                <mat-option>None</mat-option>
+                <mat-option
+                  *ngFor="let communicationDirection of communicationDirections"
+                  [value]="communicationDirection.name.valueOf()"
+                >
+                  {{ communicationDirection.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </form>
+        </mat-card-content>
+
+        <img
+          *ngIf="profileImage !== undefined"
+          [class.mat-elevation-z8]="true"
+          [src]="profileImage"
+          alt="Profile image absent"
+          mat-card-sm-image
+        />
+        <mat-card-actions>
+          <button
+            (click)="fileInput.click()"
+            color="primary"
+            mat-mini-fab
+            style="margin: 5px"
+            type="button"
+          >
+            <fa-icon [icon]="faUpload"></fa-icon>
+            <input
+              #fileInput
+              (change)="detectFile($event)"
+              accept="image/*"
+              name="file"
+              style="display: none"
+              type="file"
+            />
+          </button>
+        </mat-card-actions>
+
+        <p
+          [innerText]="globalValidationFailedResponseMessage"
+          class="mat-error"
+        ></p>
+
+        <mat-card-actions align="end">
+          <button
+            (click)="editChannel()"
+            [disabled]="form.invalid"
+            color="primary"
+            mat-raised-button
+          >
+            Edit Channel
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</app-main-nav>

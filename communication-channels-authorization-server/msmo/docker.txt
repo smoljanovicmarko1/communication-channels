@@ -1,0 +1,1 @@
+docker run -p 3307:3306 --name communication-channels-db -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=communication-channels-db -d mysql

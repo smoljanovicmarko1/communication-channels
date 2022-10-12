@@ -1,0 +1,26 @@
+.mat-raised-button {
+  margin-bottom: 5px;
+}
+
+::ng-deep .title {
+  font-size: 30px;
+}
+
+.post-content {
+  padding-top: 100px;
+}
+
+.toolbar {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  background: none;
+  z-index: 1;
+}
+
+.flex-item {
+  align-self: flex-start;
+}
+
+.side-button {
+}

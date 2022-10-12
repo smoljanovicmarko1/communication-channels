@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="att-prefix">
+    <fa-icon [icon]="faDocument"></fa-icon>
+  </div>
+  <div class="att-center">
+    <span
+      #tooltip="matTooltip"
+      [matTooltip]="this.attachment.originalName"
+      [ngStyle]="{
+        'text-overflow':
+          this.attachment.uploadComplete == undefined ||
+          this.attachment.uploadComplete
+            ? 'ellipsis'
+            : 'none',
+        'max-with':
+          this.attachment.uploadComplete == undefined ||
+          this.attachment.uploadComplete
+            ? '180px'
+            : 'none'
+      }"
+      matTooltipPosition="below"
+    >
+      {{ attachment.originalName }}</span
+    >
+  </div>
+  <div
+    *ngIf="
+      this.attachment.uploadComplete === undefined ||
+      this.attachment.uploadComplete
+    "
+    class="att-download"
+  >
+    <a (click)="onDownloadClick()">
+      <fa-icon [icon]="faDownload"></fa-icon>
+    </a>
+  </div>
+  <div
+    *ngIf="
+      this.attachment.user !== undefined &&
+      this.loggedInUser.id == this.attachment.user.id
+    "
+    class="att-delete"
+  >
+    <a (click)="onDeleteClick()">
+      <fa-icon [icon]="faDelete"></fa-icon>
+    </a>
+  </div>
+  <div
+    *ngIf="
+      this.attachment.uploadComplete !== undefined &&
+      !this.attachment.uploadComplete &&
+      this.attachment.uploadProgress != 0
+    "
+    class="att-upload-progress"
+  >
+    <mat-progress-spinner
+      [value]="this.attachment.uploadProgress"
+      color="primary"
+      diameter="20"
+      mode="determinate"
+    ></mat-progress-spinner>
+  </div>
+  <div
+    *ngIf="
+      this.attachment.uploadComplete !== undefined &&
+      !this.attachment.uploadComplete &&
+      this.attachment.uploadProgress != 0 &&
+      this.attachment.uploadProgress < 80
+    "
+    class="att-abort-upload"
+  >
+    <a (click)="onAbortUpload()" matTooltip="Abort"
+    >
+      <fa-icon [icon]="faDelete"></fa-icon
+      >
+    </a>
+  </div>
+</div>

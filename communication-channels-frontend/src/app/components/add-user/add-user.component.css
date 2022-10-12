@@ -1,0 +1,14 @@
+.mat-radio-button {
+  margin-left: 12px;
+}
+
+.center {
+  margin: auto;
+  width: 30%;
+  min-width: 400px;
+  padding: 10px;
+}
+
+.mat-form-field {
+  width: 80%;
+}

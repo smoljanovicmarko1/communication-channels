@@ -1,0 +1,9 @@
+<app-main-nav>
+  <div>
+    <app-post
+      (favouriteClick)="favouriteRemoved($event)"
+      *ngFor="let post of user.favorites"
+      [post]="post"
+    ></app-post>
+  </div>
+</app-main-nav>

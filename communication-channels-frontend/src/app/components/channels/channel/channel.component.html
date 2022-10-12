@@ -1,0 +1,91 @@
+<app-main-nav>
+  <div *ngIf="this.channel">
+    <div class="toolbar">
+      <div
+        *ngIf="
+          this.channel.channels !== undefined &&
+          this.channel.userChannels !== undefined
+        "
+        class="toolbar"
+      >
+        <button class="title flex-item" color="accent" mat-raised-button>
+          <strong>{{ channel.name }}</strong>
+        </button>
+        <hr />
+        <button
+          (click)="openNewPostDialog()"
+          [hidden]="!isPostingAllowed()"
+          class="flex-item side-button"
+          color="primary"
+          mat-raised-button
+        >
+          New Post
+        </button>
+        <button
+          [hidden]="!isHisChannel()"
+          [routerLink]="['/make-channel', channel.id]"
+          class="flex-item side-button"
+          color="primary"
+          mat-raised-button
+        >
+          Add Subchannel
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          [hidden]="!isHisChannel()"
+          [routerLink]="['/edit-channel', channel.id]"
+          class="flex-item side-button"
+        >
+          Edit Channel
+        </button>
+        <button
+          [hidden]="!hasChannelDeletePermission()"
+          (click)="deleteChannel(channel.id)"
+          class="flex-item side-button"
+          color="primary"
+          mat-raised-button
+        >
+          Delete Channel
+        </button>
+        <button
+          [hidden]="subChannels.length === 0"
+          [matMenuTriggerFor]="menu"
+          class="flex-item side-button"
+          color="primary"
+          mat-raised-button
+        >
+          Subchannels
+          <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <button
+          [hidden]="channel.parentChannel === null"
+          [routerLink]="['/channel', channel.parentChannel?.id]"
+          class="flex-item side-button"
+          color="warn"
+          mat-raised-button
+        >
+          Back to {{ channel.parentChannel?.name }}
+        </button>
+        <mat-menu #menu="matMenu">
+          <button
+            *ngFor="let subchannel of subChannels"
+            [routerLink]="['/channel', subchannel.id]"
+            mat-menu-item
+          >
+            {{ subchannel.name }}
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+
+    <div class="post-content">
+      <app-post
+        *ngFor="let post of channel.posts"
+        [id]="[post.id]"
+        [post]="post"
+        [channel]="channel"
+      ></app-post>
+    </div>
+  </div>
+</app-main-nav>

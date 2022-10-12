@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons"); /* bez ovoga ne ucitava mat-icon */
+
+body {
+  background-image: url("/assets/img/img1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.my-tooltip {
+  white-space: pre-line;
+  font-size: medium !important;
+}
+
+[hidden] {
+  display: none !important;
+}

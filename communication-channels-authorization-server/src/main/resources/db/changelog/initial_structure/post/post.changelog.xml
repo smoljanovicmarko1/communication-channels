@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="post-1" author="markosmoljanovic">
+        <createTable tableName="post">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="title" type="varchar(255)"/>
+            <column name="body" type="varchar(1000)"/>
+            <column name="date_created" type="date"/>
+            <column name="user_id" type="bigint">
+                <constraints foreignKeyName="post_user" references="user(id)"/>
+            </column>
+            <column name="channel_id" type="bigint">
+                <constraints foreignKeyName="post_channel" references="channel(id)"/>
+            </column>
+            <column name="edited" type="boolean"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

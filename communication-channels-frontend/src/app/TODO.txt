@@ -1,0 +1,5 @@
+TODO: postaviti konstante umesto stringova svuda gde je potrebno (i na serveru)
+TODO: uraditi animacije
+TODO: uraditi progres korisnika
+TODO: uraditi poene za progres
+TODO: postaviti verzionisanje baze podataka na serveru

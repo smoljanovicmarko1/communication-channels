@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="user_role_user_permission-1" author="markosmoljanovic">
+        <createTable tableName="user_role_user_permission">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="user_role_id" type="bigint">
+                <constraints foreignKeyName="user_role_user_permission_user_role" references="user_role(id)"/>
+            </column>
+            <column name="user_permission_id" type="bigint">
+                <constraints foreignKeyName="user_role_user_permission_user_permission"
+                             references="user_permission(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
