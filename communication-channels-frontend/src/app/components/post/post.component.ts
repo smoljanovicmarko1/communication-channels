@@ -264,6 +264,9 @@ export class PostComponent implements OnInit, OnDestroy {
               (att) => att.originalName !== dummyAttachmentRemoveName
             );
           }, 3000);
+          this.dialogService.openDialogError(
+            'Error occurred while uploading files'
+          );
           return throwError(err.message);
         })
       )
