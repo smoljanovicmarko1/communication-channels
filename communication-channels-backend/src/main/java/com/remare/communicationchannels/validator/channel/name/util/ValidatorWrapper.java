@@ -1,4 +1,4 @@
-package com.remare.communicationchannels.util;
+package com.remare.communicationchannels.validator.channel.name.util;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

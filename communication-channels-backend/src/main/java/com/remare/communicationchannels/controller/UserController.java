@@ -7,7 +7,7 @@ import com.remare.communicationchannels.dto.user.UserShortDto;
 import com.remare.communicationchannels.http.HttpResponse;
 import com.remare.communicationchannels.service.EmailService;
 import com.remare.communicationchannels.service.UserService;
-import com.remare.communicationchannels.util.ValidatorWrapper;
+import com.remare.communicationchannels.validator.channel.name.util.ValidatorWrapper;
 import com.remare.communicationchannels.validator.user.groups.Add;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
